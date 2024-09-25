@@ -18,7 +18,12 @@
       command: >
         yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
       args:
-        creates: /etc/yum.repos.d/docker-ce.repo  # Chỉ chạy nếu tệp repo chưa tồn tại
+        creates: /etc/yum.repos.d/docker-ce.repo
+
+    - name: Install containerd.io
+      yum:
+        name: containerd.io
+        state: present
 
     - name: Install docker
       yum:
